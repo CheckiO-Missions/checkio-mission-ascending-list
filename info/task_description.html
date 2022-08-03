@@ -21,22 +21,7 @@
         <strong>Example:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">isAscending([-5, 10, 99, 123456]) == true
-isAscending([99]) == true
-isAscending([4, 5, 6, 7, 3, 7, 9]) == false
-isAscending([]) == true
-isAscending([1, 1, 1, 1]) == false
-</pre>
-{% else %}
-<pre class="brush: python">
-is_ascending([-5, 10, 99, 123456]) == True
-is_ascending([99]) == True
-is_ascending([4, 5, 6, 7, 3, 7, 9]) == False
-is_ascending([]) == True
-is_ascending([1, 1, 1, 1]) == False
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 <p><i>The mission was taken from Python CCPS 109 Fall 2018. It is taught for Ryerson Chang School of Continuing Education by <a href="http://www.scs.ryerson.ca/~ikokkari/">Ilkka Kokkarinen</a></i></p>

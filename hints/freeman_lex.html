@@ -1,0 +1,56 @@
+<body data-author="freeman_lex">
+    <div class="question-answer">
+        <div class="question">
+            I have no idea how to start solving this mission.
+        </div>
+        <div class="answer">
+            Well, the idea is to iterate over the list and compare each value with next. If all of these comparisons are correct
+            (any value in list is strictly smaller then next one) or the list is empty, then return True, else False.
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            What instruments of Python should I use to implement this idea into code?
+        </div>
+        <div class="answer">
+            I call this step of hints "Google the following terms".
+            You will need 'len()' method of lists and equality operator '==0' to check if the list in empty.
+            You also need 'all()' to check condition to all values in list. Inside 'all()' create list of bool using
+            'list comprehentions'. To create this list use 'range()' to iterate over the input list and
+            'list indexing' to compare pair of values. Use 'or' operator to join this two variants of result (for empty
+            list and non empty).
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            I generally understand, but need to see the final solution.
+        </div>
+        <div class="answer">
+            Here it is:
+            <pre class="brush:python">
+def is_ascending(items: list[int]) -> bool:
+    
+    return len(items) == 0 or all([items[i] < items[i+1] for i in range(len(items)-1)])
+            </pre>
+            Look at the range parameter. I decrease it by 1, otherwise items[i+1] will be out of list.
+            To make the code more 'pythonic' (I advise you to google this term as well), we may use 'not'
+            operator to check list emptiness and generator instead of list comprehention. Like this:
+            <pre class="brush:python">
+def is_ascending(items: list[int]) -> bool:
+                    
+    return not items or all(items[i] < items[i+1] for i in range(len(items)-1))
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            Thanks! Now I know and understand more! Everything works fine!
+        </div>
+        <div class="answer">
+            Glad to hear it!
+        </div>
+    </div>
+    
+    
+    
+</body>
