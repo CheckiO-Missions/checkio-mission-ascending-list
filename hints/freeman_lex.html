@@ -4,38 +4,44 @@
             I have no idea how to start solving this mission.
         </div>
         <div class="answer">
-            Well, the idea is to iterate over the list and compare each value with next. If all of these comparisons are correct
-            (any value in list is strictly smaller then next one) or the list is empty, then return True, else False.
+            Well, the general idea is to iterate over the list and compare each value with next.
+            If you find an item, which is not smaller then next one, then list is not ascending. 
         </div>
     </div>
     <div class="question-answer">
         <div class="question">
-            What instruments of Python should I use to implement this idea into code?
+            What instrument of Python should I use to iterate over the list?
         </div>
         <div class="answer">
-            I call this step of hints "Google the following terms".
-            You will need 'len()' method of lists and equality operator '==0' to check if the list in empty.
-            You also need 'all()' to check condition to all values in list. Inside 'all()' create list of bool using
-            'list comprehentions'. To create this list use 'range()' to iterate over the input list and
-            'list indexing' to compare pair of values. Use 'or' operator to join this two variants of result (for empty
-            list and non empty).
-        </div>
-    </div>
-    <div class="question-answer">
-        <div class="question">
-            I generally understand, but need to see the final solution.
-        </div>
-        <div class="answer">
-            Here it is:
-            <pre class="brush:python">
-def is_ascending(items: list[int]) -> bool:
-    
-    return len(items) == 0 or all([items[i] < items[i+1] for i in range(len(items)-1)])
+            In this particular solution I recommend you to use while loop:
+            <pre class="brush: python">
+while (condition == True):
+    do something
             </pre>
-            Look at the range parameter. I decrease it by 1, otherwise items[i+1] will be out of list.
-            To make the code more 'pythonic' (I advise you to google this term as well), we may use 'not'
-            operator to check list emptiness and generator instead of list comprehention. Like this:
-            <pre class="brush:python">
+            But be carefull, if condition is always True, you will receive an infinite loop.
+            So, inside loop you should be able to make condition False or use break command.
+            For example, this code will execute 5 times:
+            <pre class="brush: python">
+i = 0
+while i < 5:
+    do something
+    i = i + 1 # better use increment 'i += 1'
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            I understand about while, but what should we do instead of 'do something' in this mission?
+        </div>
+        <div class="answer">
+As i said in the first hint, you must compare pair of values and check
+        </div>
+    </div>        
+
+
+
+
+
 def is_ascending(items: list[int]) -> bool:
                     
     return not items or all(items[i] < items[i+1] for i in range(len(items)-1))
