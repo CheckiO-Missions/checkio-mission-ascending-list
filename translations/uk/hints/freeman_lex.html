@@ -15,6 +15,7 @@
         <div class="answer">
             У цьому розв'язку я раджу тобі використати <a target="_blank"
             href="https://docs.python.org/3/reference/compound_stmts.html#while">while</a>:
+            
             <pre class="brush: python">
 while (condition == True):
     # виконувати команди
@@ -22,6 +23,7 @@ while (condition == True):
             Але будь уважний, якщо умова завжди True, ти отримаєш нескінченний цикл.
             Тому, всередині while ти повинен мати змогу перетворити умову на False або використати команду break.
             Наприклад, наступний код виконається N разів:
+            
             <pre class="brush: python">
 i = 0
 while i < N:
@@ -37,6 +39,7 @@ while i < N:
         <div class="answer">
             Як я вже сказав у першій підказці, ти повинен порівняти пари сусідніх значень і перевіряти,
             чи в якісь парі перше значення не є строго меншим за друге:
+            
             <pre class="brush: python">
 if items[a] >= items[a + 1]:
     # виконувати команди
@@ -51,6 +54,7 @@ if items[a] >= items[a + 1]:
             Для цього тобі потрібно об'єднати дві попередні підказки. Оскільки ти починаєш порівнювати
             від початку списку, то можеш використати вже оголошену змінну 'i' як індекс для отримання
             конкретних значень зі списку:
+            
             <pre class="brush: python">
 i = 0
 while i < N:
@@ -61,6 +65,7 @@ while i < N:
             Як другий індекс ти використовуєш [i + 1] тому повинен проходити список не до кінця - len(items)),
             а лише до len(items) - 1. В іншому разі, i + 1 буде за межами списку і це викличе IndexError.
             Використай конструкцію замість N:
+            
             <pre class="brush: python">
 i = 0
 while i < len(items) - 1:
@@ -81,6 +86,7 @@ while i < len(items) - 1:
             тобі потрібно повернути False.
             Але якщо while закінчується без такого повернення, то наш список є зростаючим і після while
             ти повинен повернути True. Не забудь визначити саму функцію ;-) :
+            
             <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
     
@@ -100,6 +106,7 @@ def is_ascending(items: list[int]) -> bool:
         <div class="answer">
             Цей випадок вже передбачений у коді.
             Поглянь на кож ще раз з ремарками щодо цього випадку:
+            
             <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
@@ -123,6 +130,7 @@ def is_ascending(items: list[int]) -> bool:
             перевіряючи список на пустоту з використанням 'not items'. Зверни
             увагу, що використовуючи all() ти маєш змінити умову порівняння -
             кожне значення має бути строго менше ніж наступне. Поглянь:
+            
             <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                     
