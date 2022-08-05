@@ -79,7 +79,7 @@ while i < len(items) - 1:
             is not ascending. In this case, inside if, instead of 'do something', you need to return False.
             But if 'while' ends without this return, it means, list is ascending and after 'while'
             you must return True. Don't forget to declare function itself ;-) :
-            <pre class="brush:python">
+            <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
     
     i = 0
@@ -98,7 +98,7 @@ def is_ascending(items: list[int]) -> bool:
         <div class="answer">
             This case is already predicted in the code.
             Please, look at the code again with remarks, if the list is empty:
-            <pre class="brush:python">
+            <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     i = 0
@@ -118,9 +118,8 @@ def is_ascending(items: list[int]) -> bool:
         <div class="answer">
             Yes. Using the generator inside <a target="_blank"
             href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> and checking list
-            emptiness with 'not items'.
-            Pay attension, that using all() you should change comparison condition - all values must be
-            strictly less then the next. Let's see this:
+            emptiness with 'not items'. Pay attension, that using all() you should change
+            comparison condition - all values must be strictly less then the next. Let's see this:
             <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                     
