@@ -1,0 +1,139 @@
+<body data-author="freeman_lex">
+    <div class="question-answer">
+        <div class="question">
+            I have no idea how to start solving this mission.
+        </div>
+        <div class="answer">
+            Well, the general idea is to iterate over the list and compare each value with next.
+            If you find an item, which is not smaller then next one, then list is not ascending. 
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            What instrument of Python should I use to iterate over the list?
+        </div>
+        <div class="answer">
+            In this particular solution I recommend you to use <a target="_blank"
+            href="https://docs.python.org/3/reference/compound_stmts.html#while">while statement</a>:
+            <pre class="brush: python">
+while (condition == True):
+    # do something
+            </pre>
+            But be carefull, if condition is always True, you will receive an infinite loop.
+            So, inside while you should be able to make condition False or use break command.
+            For example, the following code will execute N times:
+            <pre class="brush: python">
+i = 0
+while i < N:
+    # do something
+    i = i + 1 # better use increment 'i += 1'
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            I understand about while, but what should I do instead of 'do something' inside while?
+        </div>
+        <div class="answer">
+            As I said in the first hint, you must compare pair of values and check, if any of it
+            is not strictly less then the next:
+            <pre class="brush: python">
+if items[a] >= items[a + 1]:
+    # do something
+            </pre>            
+        </div>
+    </div>        
+    <div class="question-answer">
+        <div class="question">
+            Ok, but this is only one comparison...how to compare values over the all list?
+        </div>
+        <div class="answer">
+            For this you need to combine both previous hints. As you start compare from the very
+            beginning of list, you may use already declared variable 'i' as index to get the specific
+            valuee from list:
+            <pre class="brush: python">
+i = 0
+while i < N:
+    if items[i] >= items[i + 1]:
+        # do something
+    i += 1
+            </pre>
+            As second index you use [i + 1] so must iterate not to the end of the list - len(items)),
+            but only to len(items) - 1. Otherwise, i + 1 will be outside list and raise IndexError.
+            Use it instead N:
+            <pre class="brush: python">
+i = 0
+while i < len(items) - 1:
+    if items[i] >= items[i + 1]:
+        # do something
+    i += 1
+            </pre>                         
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            Ok, but my solution still doesn't return any bool. What should I add?
+        </div>
+        <div class="answer">
+            Yes. If in comparison first value is not strictly smaller then the next, our list
+            is not ascending. In this case, inside if, instead of 'do something', you need to return False.
+            But if 'while' ends without this return, it means, list is ascending and after 'while'
+            you must return True. Don't forget to declare function itself ;-) :
+            <pre class="brush:python">
+def is_ascending(items: list[int]) -> bool:
+    
+    i = 0
+    while i < len(items)-1:
+        if items[i] >= items[i+1]:
+            return False
+        i += 1
+    return True
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            What about case with empty list? It should return True as well.
+        </div>
+        <div class="answer">
+            This case is already predicted in the code.
+            Please, look at the code again with remarks, if the list is empty:
+            <pre class="brush:python">
+def is_ascending(items: list[int]) -> bool:
+
+    i = 0
+    # len(items) == 0
+    # 0-1 == -1
+    # so the first 'while' looks like:
+    while 0 < -1: # this condition is already False, 'while' never starts.
+        ...
+    return True # go here directly.
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            I wonder if it is possible to write this solution in one line?
+        </div>
+        <div class="answer">
+            Yes. Using the generator inside <a target="_blank"
+            href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> and checking list
+            emptiness with 'not items'.
+            Pay attension, that using all() you should change comparison condition - all values must be
+            strictly less then the next. Let's see this:
+            <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+                    
+    return not items or all(items[i] < items[i+1] for i in range(len(items)-1))                
+            </pre>
+        </div>
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            Wow, thanks! I know and understand more now! Everything works fine!
+        </div>
+        <div class="answer">
+            Glad to hear it!
+        </div>
+    </div>
+</body>
