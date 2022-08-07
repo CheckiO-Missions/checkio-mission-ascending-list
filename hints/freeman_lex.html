@@ -124,7 +124,8 @@ def is_ascending(items: list[int]) -> bool:
             <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                     
-    return not items or all(items[i] < items[i+1] for i in range(len(items)-1))                
+    return not items or all(items[i] < items[i+1]
+                            for i in range(len(items)-1))                
             </pre>
         </div>
     </div>
