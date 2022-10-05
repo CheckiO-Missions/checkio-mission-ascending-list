@@ -1,112 +1,107 @@
 <body data-author="freeman_lex">
-    <div class="question-answer">
-        <div class="question">
-            Я не маю уявлення як розвязати це завдання!
-        </div>
-        <div class="answer">
-            Загальна ідея це проходити по списку і порівнювати пари сусідніх значень.
-            Якщо знайдеш значення, яке не менше за наступне, значить список не строго зростаючий. 
-        </div>
+<div class="question-answer">
+    <div class="question">
+        Я не маю уявлення як розв'язати це завдання!
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Який інструмент Python мені використати для проходження по списку?
-        </div>
-        <div class="answer">
-            У цьому розв'язку я раджу тобі використати <a target="_blank"
-            href="https://docs.python.org/3/reference/compound_stmts.html#while">while</a>:
-            <pre class="brush: python">
+    <div class="answer">
+        <p>Загальна ідея це проходити по списку і порівнювати пари сусідніх значень.
+        Якщо знайдеш значення, яке не менше за наступне, значить список не строго зростаючий.</p> 
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Який інструмент Python мені використати для проходження по списку?
+    </div>
+    <div class="answer">
+        <p>У цьому розв'язку я раджу тобі використати <a target="_blank"
+        href="https://docs.python.org/3/reference/compound_stmts.html#while">while</a>: 
+        <pre class="brush: python">
 while (condition == True):
     # виконувати команди
-            </pre>
-            Але будь уважний, якщо умова завжди True, ти отримаєш нескінченний цикл.
-            Тому, всередині while ти повинен мати змогу перетворити умову на False або використати команду break.
-            Наприклад, наступний код виконається N разів:
-            
-            <pre class="brush: python">
+        </pre>
+        <p>Але будь уважний, якщо умова завжди <b class="code">True</b>, ти отримаєш нескінченний цикл.
+        Тому, всередині while ти повинен мати змогу перетворити умову на <b class="code">False</b> або використати команду <b class="code">break</b>.
+        Наприклад, наступний код виконається <b class="code">N</b> разів:</p>
+        <pre class="brush: python">
 i = 0
 while i < N:
     # виконувати команди
     i = i + 1 # краще використай інкремент 'i += 1'
-            </pre>
-        </div>
+        </pre>
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Я зрозумів про while, але які саме команди мені слід виконувати всередині while?
-        </div>
-        <div class="answer">
-            Як я вже сказав у першій підказці, ти повинен порівняти пари сусідніх значень і перевіряти,
-            чи в якісь парі перше значення не є строго меншим за друге:
-            
-            <pre class="brush: python">
+</div>
+<div class="question-answer">
+    <div class="question">
+        Я зрозумів про while, але які саме команди мені слід виконувати всередині while?
+    </div>
+    <div class="answer">
+        <p>Як я вже сказав у першій підказці, ти повинен порівняти пари сусідніх значень і перевіряти,
+        чи в якісь парі перше значення не є строго меншим за друге:</p>
+        <pre class="brush: python">
 if items[a] >= items[a + 1]:
     # виконувати команди
-            </pre>            
-        </div>
-    </div>        
-    <div class="question-answer">
-        <div class="question">
-            Так, але ж це лише одне порівняння...як порівняти значення по всьому списку?
-        </div>
-        <div class="answer">
-            Для цього тобі потрібно об'єднати дві попередні підказки. Оскільки ти починаєш порівнювати
-            від початку списку, то можеш використати вже оголошену змінну 'i' як індекс для отримання
-            конкретних значень зі списку:
-            
-            <pre class="brush: python">
+        </pre>            
+    </div>
+</div>        
+<div class="question-answer">
+    <div class="question">
+        Так, але ж це лише одне порівняння...як порівняти значення по всьому списку?
+    </div>
+    <div class="answer">
+        <p>Для цього тобі потрібно об'єднати дві попередні підказки. Оскільки ти починаєш порівнювати
+        від початку списку, то можеш використати вже оголошену змінну <b class="code">i</b> як індекс для отримання
+        конкретних значень зі списку:</p>
+        <pre class="brush: python">
 i = 0
 while i < N:
     if items[i] >= items[i + 1]:
         # виконувати команди
     i += 1
-            </pre>
-            Як другий індекс ти використовуєш [i + 1] тому повинен проходити список не до кінця - len(items)),
-            а лише до len(items) - 1. В іншому разі, i + 1 буде за межами списку і це викличе IndexError.
-            Використай конструкцію замість N:
-            
-            <pre class="brush: python">
+        </pre>
+        <p>Як другий індекс ти використовуєш <b class="code">[i + 1]</b> тому повинен проходити список не до кінця - <b class="code">len(items)</b>,
+        а лише до <b class="code">len(items) - 1</b>. В іншому разі, <b class="code">i + 1</b> буде за межами списку і це викличе <b class="code">IndexError</b>.
+        Використай конструкцію замість <b class="code">N</b>:</p>
+        <pre class="brush: python">
 i = 0
 while i < len(items) - 1:
     if items[i] >= items[i + 1]:
         # виконувати команди
     i += 1
-            </pre>                         
-        </div>
+        </pre>                         
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Це все добре, але мій розв'язок досі не повертає жодного логічного значення.
-            Що мені слід до нього додати?
-        </div>
-        <div class="answer">
-            Так. Якщо в твої порівняннях перше значення не виявиться строго меншим за друге,
-            то це значить що список не є зростаючим. В цьому випадку, всередині if, замість 'робити команди',
-            тобі потрібно повернути False.
-            Але якщо while закінчується без такого повернення, то наш список є зростаючим і після while
-            ти повинен повернути True. Не забудь визначити саму функцію ;-) :
-            
-            <pre class="brush: python">
+</div>
+<div class="question-answer">
+    <div class="question">
+        Це все добре, але мій розв'язок досі не повертає жодного логічного значення.
+        Що мені слід до нього додати?
+    </div>
+    <div class="answer">
+        <p>Так. Якщо в твоїх порівняннях перше значення не виявиться строго меншим за друге,
+        то це значить що список не є зростаючим. В цьому випадку, всередині <b class="code">if</b>, замість 'робити команди',
+        тобі потрібно повернути <b class="code">False</b>.
+        Але якщо <b class="code">while</b> закінчується без такого повернення, то наш список є зростаючим і після <b class="code">while</b> 
+        ти маєш повернути <b class="code">True</b>. Не забудь визначити саму функцію ;-) :</p>
+        <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
-    
+
     i = 0
     while i < len(items)-1:
         if items[i] >= items[i+1]:
             return False
         i += 1
+
     return True
-            </pre>
-        </div>
+        </pre>
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Як на рахунок випадку, коли список порожній? Адже тоді функція також повинна повертати True.
-        </div>
-        <div class="answer">
-            Цей випадок вже передбачений у коді.
-            Поглянь на кож ще раз з ремарками щодо цього випадку:
-            
-            <pre class="brush: python">
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Як на рахунок випадку, коли список порожній? Адже тоді функція також повинна повертати <b class="code">True</b>.</p>
+    </div>
+    <div class="answer">
+        <p>Цей випадок вже передбачений у коді.
+        Поглянь на кож ще раз з ремарками щодо цього випадку:</p>
+        <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     i = 0
@@ -116,34 +111,61 @@ def is_ascending(items: list[int]) -> bool:
     while 0 < -1: # ця умова вже відразу False, 'while' ніколи не почнеться.
         ...
     return True # перехід відразу сюди.
-            </pre>
-        </div>
+        </pre>
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Цікаво, чи можливо написати цей розв'язок в один рядок?
-        </div>
-        <div class="answer">
-            Так. Використовуючи генератор всередині <a target="_blank"
-            href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> і
-            перевіряючи список на пустоту з використанням 'not items'. Зверни
-            увагу, що використовуючи all() ти маєш змінити умову порівняння -
-            кожне значення має бути строго менше ніж наступне. Поглянь:
-            
-            <pre class="brush: python">
+</div>
+<div class="question-answer">
+    <div class="question">
+        Цікаво, чи можливо написати цей розв'язок в один рядок?
+    </div>
+    <div class="answer">
+        <p>Так. Використовуючи генератор всередині <a target="_blank"
+        href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> і
+        перевіряючи список на пустоту з використанням <b class="code">not items</b>. Зверни
+        увагу, що використовуючи all() ти маєш змінити умову порівняння -
+        кожне значення має бути строго менше ніж наступне. Поглянь:</p>
+        <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
-                    
+                
     return not items or all(items[i] < items[i+1]
                             for i in range(len(items)-1))                
-            </pre>
-        </div>
+        </pre>
     </div>
-    <div class="question-answer">
-        <div class="question">
-            Вау, дякую! Тепер я знаю і розумію більше! Все працює як слід!
-        </div>
-        <div class="answer">
-            Радий це чути!
-        </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розв'язків!
+        Адже я хочу бути справжнім Python Ніндзею!
     </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>Використовуючи <b class="code">set()</b> ти видаляєш однакові значення
+            і використовуючи <b class="code">sorted()</b> ти створюєш новий список
+            у зростаючому порядку. Якщо він такий же як початковий список -
+            значить початковий список також строго зростаючий.
+        </p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return sorted(set(items)) == items
+        </pre>
+        <p>
+            Цей розв'язок використовує рекурсію: він перевіряє перші два елементи і викликає
+            ту ж функцію на менший список.
+        </p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return items[0] < items[1] and is_ascending(items[1:]) if len(items) > 1 else True
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
 </body>

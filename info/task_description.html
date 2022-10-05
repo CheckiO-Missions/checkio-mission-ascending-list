@@ -1,26 +1,26 @@
 <!-- Describe task in general -->
 
 <p>
-    Determine whether the list of elements is ascending such that each of its elements
+    Determine whether the {% if is_js %}Array{% else %}list{% endif %} of elements is ascending such that each of its elements
     is strictly larger than (and not merely equal to) the preceding element.
-    Empty list consider as ascending.
+    Empty {% if is_js %}Array{% else %}list{% endif %} consider as ascending.
 </p>
 
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> List with ints.
+    <strong>Input:</strong> {% if is_js %}An Array with numbers{% else %}A list with integers{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> Bool.
+    <strong>Output:</strong> Boolean.
 </p>
 
 
 <!-- Put some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
