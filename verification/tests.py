@@ -29,6 +29,11 @@ TESTS = {
         {
             "input": [[1, 1, 1, 1]],
             "answer": False
+        },
+        {
+            "input": [[1, 3, 3, 5]],
+            "answer": False,
+            "explanation": "3 == 3, so it is not __strictly__  ascending"
         }
     ],
     "Extra": [
