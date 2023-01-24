@@ -12,54 +12,54 @@ TESTS = {
     "Basics": [
         {
             "input": [[-5, 10, 99, 123456]],
-            "answer": True
+            "answer": True,
         },
         {
             "input": [[99]],
-            "answer": True
+            "answer": True,
         },
         {
             "input": [[4, 5, 6, 7, 3, 7, 9]],
-            "answer": False
+            "answer": False,
         },
         {
             "input": [[]],
-            "answer": True
+            "answer": True,
         },
         {
             "input": [[1, 1, 1, 1]],
-            "answer": False
+            "answer": False,
         },
         {
             "input": [[1, 3, 3, 5]],
             "answer": False,
             "explanation": "3 == 3, so it is not __strictly__  ascending"
-        }
+        },
     ],
     "Extra": [
         {
             "input": [[-5, -6]],
-            "answer": False
+            "answer": False,
         },
         {
             "input": [[1, 2, 3]],
-            "answer": True
+            "answer": True,
         },
         {
             "input": [[1, 1]],
-            "answer": False
+            "answer": False,
         },
         {
             "input": [[-1, 0, 1]],
-            "answer": True
+            "answer": True,
         },
         {
             "input": [[1, 0, 1]],
-            "answer": False
+            "answer": False,
         },
         {
             "input": [[1, 2, 4, 3, 5]],
-            "answer": False
-        }
+            "answer": False,
+        },
     ]
 }

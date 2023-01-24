@@ -1,84 +1,95 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        I have no idea how to start solving this mission.
+        <p>
+            I have no idea how to start solving this mission.
+        </p>
     </div>
     <div class="answer">
-        <p>Well, the general idea is to iterate over the list and compare each value with the next.
-        If you find an item, which is not smaller then next one, then list is not ascending.</p> 
+        <p>
+            💡 Well, the general idea is to iterate over the list and compare each value with the next. If you find an item, which is not smaller then next one, then list is not ascending.
+        </p> 
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        What instrument of Python should I use to iterate over the list?
+        <p>
+            What instrument of Python should I use to iterate over the list?
+        </p>
     </div>
     <div class="answer">
-        <p>In this particular solution I recommend you to use <a target="_blank"
-        href="https://docs.python.org/3/reference/compound_stmts.html#while">while statement</a>:</p>
+        <p>
+            In this particular solution I recommend you to use <a target="_blank" href="https://docs.python.org/3/reference/compound_stmts.html#while">while statement</a>:
+        </p>
         <pre class="brush: python">
 while (condition == True):
-    # do something
+    ...
         </pre>
-        <p>But carefully, if condition is always <b class="code">True</b>, you will receive an infinite loop.
-        So, inside while you should be able to make condition <b class="code">False</b> or use <b class="code">break</b> command.
-        For example, the following code will execute <b class="code">N</b> times:</p>
+        <p>
+            But carefully, if condition is always <b class="code">True</b>, you will receive an infinite loop. So, inside <b class="code">while</b> you should be able to make condition <b class="code">False</b> or use <b class="code">break</b> command. For example, the following code will execute <b class="code">N</b> times:</p>
         <pre class="brush: python">
 i = 0
 while i < N:
-    # do something
-    i = i + 1 # better use increment 'i += 1'
+    ...
+    # better use increment 'i += 1'
+    i = i + 1 
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        I understand about while, but what should I do instead of 'do something' inside while?
+        <p>
+            I understand about <b class="code">while</b>, but what should I do instead of <b class="code">...</b> inside <b class="code">while</b>?
+        </p>
     </div>
     <div class="answer">
-        <p>As I said in the first hint, you must compare pair of values and check, if any of it
-        is not strictly less then the next:</p>
+        <p>
+            As I said in the first hint, you must compare pair of values and check, if any of it is not strictly less then the next:
+        </p>
         <pre class="brush: python">
 if items[a] >= items[a + 1]:
-    # do something
+    ...
         </pre>            
     </div>
 </div>        
 <div class="question-answer">
     <div class="question">
-        Ok, but this is only one comparison...how to compare values over the all list?
+        <p>
+            Ok, but this is only one comparison...how to compare values over the all list?
+        </p>
     </div>
     <div class="answer">
-        <p>For this you need to combine both previous hints. As you start compare from the very
-        beginning of list, you may use already declared variable <b class="code">i</b> as index to get the specific
-        value from list:</p>
+        <p>
+            For this you need to combine both previous hints. As you start compare from the very beginning of list, you may use already declared variable <b class="code">i</b> as index to get the specific value from list:
+        </p>
         <pre class="brush: python">
 i = 0
 while i < N:
     if items[i] >= items[i + 1]:
-        # do something
+        ...
     i += 1
         </pre>
-        <p>As second index you use <b class="code">[i + 1]</b> so must iterate not to the end of the list - <b class="code">len(items)</b>,
-        but only to <b class="code">len(items) - 1</b>. Otherwise, <b class="code">i + 1</b> will be outside list and raise <b class="code">IndexError</b>.
-        Use it instead <b class="code">N</b>:</p>
+        <p>
+            As second index you use <b class="code">[i + 1]</b> so must iterate not to the end of the list - <b class="code">len(items)</b>, but only to <b class="code">len(items) - 1</b>. Otherwise, <b class="code">i + 1</b> will be outside list and raise <b class="code">IndexError</b>. Use it instead <b class="code">N</b>:</p>
         <pre class="brush: python">
 i = 0
 while i < len(items) - 1:
     if items[i] >= items[i + 1]:
-        # do something
+        ...
     i += 1
         </pre>                         
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Ok, but my solution still doesn't return any boolean. What should I add?
+        <p>
+            Ok, but my solution still doesn't return any boolean. What should I add?
+        </p>
     </div>
     <div class="answer">
-        <p>Yes. If in comparison first value is not strictly smaller then the next, our list
-        is not ascending. In this case, inside <b class="code">if</b>, instead of 'do something', you need to return <b class="code">False</b>.
-        But if <b class="code">while</b> ends without this return, it means, list is ascending and after <b class="code">while</b>
-        you must return <b class="code">True</b>. Don't forget to define function itself ;-) :</p>
+        <p>
+            Yes. If in comparison first value is not strictly smaller then the next, our list is not ascending. In this case, inside <b class="code">if</b>, instead of <b class="code">...</b> , you need to return <b class="code">False</b>. But if <b class="code">while</b> ends without this return, it means, list is ascending and after <b class="code">while</b> you must return <b class="code">True</b>. Don't forget to define function itself ;-) :
+        </p>
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
@@ -94,11 +105,13 @@ def is_ascending(items: list[int]) -> bool:
 </div>
 <div class="question-answer">
     <div class="question">
-        <p>What about case with empty list? It should return <b class="code">True</b> as well.</p>
+        <p>
+            What about case with empty list? It should return <b class="code">True</b> as well.
+        </p>
     </div>
     <div class="answer">
-        <p>This case is already predicted in the code.
-        Please, look at the code again with remarks, if the list is empty:</p>
+        <p>
+            This case is already predicted in the code. Please, look at the code again with remarks, if the list is empty:</p>
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
@@ -106,22 +119,23 @@ def is_ascending(items: list[int]) -> bool:
     # len(items) == 0
     # 0-1 == -1
     # so the first 'while' looks like:
-    while 0 < -1: # this condition is already False, 'while' never starts.
+    # this condition is already False, 'while' never starts.
+    while 0 < -1: 
         ...
-    return True # go here directly.
+    # go here directly.    
+    return True 
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        I wonder if it is possible to write this solution in one line?
+        <p>
+            I wonder if it is possible to write this solution in one line?
+        </p>
     </div>
     <div class="answer">
-        <p>Yes. Using the generator inside <a target="_blank"
-        href="https://www.w3schools.com/python/ref_func_all.asp">all()</a>
-        and checking list emptiness with <b class="code">not items</b>. Pay attention, that
-        using all() you should change comparison condition - all values must
-        be strictly less then the next. Let's see this:</p>
+        <p>
+            Yes. Using the generator inside <a target="_blank" href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> and checking list emptiness with <b class="code">not items</b>. Pay attention, that using all() you should change comparison condition - all values must be strictly less then the next. Let's see this:</p>
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                 
@@ -132,14 +146,15 @@ def is_ascending(items: list[int]) -> bool:
 </div>
 <div class="question-answer">
     <div class="question">
-        Show me more solutions!
-        'Cause I wanna be a real Python Ninnjaa!
+        <p>
+            Show me more solutions!<br />
+            'Cause I wanna be a real 🥇 Python Ninnjaa!
+        </p>
     </div>
     <div class="answer">
         <p>Sure, grab it!</p>
-        <p>Using <b class="code">set()</b> you remove duplicates and using <b class="code">sorted()</b> you arrange
-            the list in ascending order as a new list. If it remains the same as original -
-            the original is strictly ascending.
+        <p>
+            Using <b class="code">set()</b> you remove duplicates and using <b class="code">sorted()</b> you arrange the list in ascending order as a new list. If it remains the same as original - the original is strictly ascending.
         </p>
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
@@ -159,10 +174,14 @@ def is_ascending(items: list[int]) -> bool:
 </div>
 <div class="question-answer">
     <div class="question">
-        Wow, thanks! I know and understand more now! Everything works fine!
+        <p>
+            Wow, thanks! I know and understand more now! Everything works fine!
+        </p>
     </div>
     <div class="answer">
-        Glad to hear it!
+        <p>
+            👍 Glad to hear it!
+        </p>
     </div>
 </div>
 </body>
