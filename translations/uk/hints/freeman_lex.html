@@ -139,12 +139,14 @@ def is_ascending(items: list[int]) -> bool:
         <p>
             Так. Використовуючи генератор всередині <a target="_blank" href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> і перевіряючи список на пустоту з використанням <b class="code">not items</b>. Зверни увагу, що використовуючи all() ти маєш змінити умову порівняння - кожне значення має бути строго менше ніж наступне. Поглянь:
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                 
     return not items or all(items[i] < items[i+1]
                             for i in range(len(items)-1))                
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -162,20 +164,24 @@ def is_ascending(items: list[int]) -> bool:
             у зростаючому порядку. Якщо він такий же як початковий список -
             значить початковий список також строго зростаючий.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     return sorted(set(items)) == items
         </pre>
+        </div>
         <p>
             Цей розв'язок використовує рекурсію: він перевіряє перші два елементи і викликає
             ту ж функцію на менший список.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     return items[0] < items[1] and is_ascending(items[1:]) if len(items) > 1 else True
         </pre>
+        </div>
         <p><b>
             Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!
         <b></p>
