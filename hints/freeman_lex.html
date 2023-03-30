@@ -136,12 +136,14 @@ def is_ascending(items: list[int]) -> bool:
     <div class="answer">
         <p>
             Yes. Using the generator inside <a target="_blank" href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> and checking list emptiness with <b class="code">not items</b>. Pay attention, that using all() you should change comparison condition - all values must be strictly less then the next. Let's see this:</p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
                 
     return not items or all(items[i] < items[i+1]
                             for i in range(len(items)-1))                
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -156,20 +158,24 @@ def is_ascending(items: list[int]) -> bool:
         <p>
             Using <b class="code">set()</b> you remove duplicates and using <b class="code">sorted()</b> you arrange the list in ascending order as a new list. If it remains the same as original - the original is strictly ascending.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     return sorted(set(items)) == items
         </pre>
+        </div>
         <p>
             This solution uses recursion: it checks first two elements and call
             the same function on smaller list.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_ascending(items: list[int]) -> bool:
 
     return items[0] < items[1] and is_ascending(items[1:]) if len(items) > 1 else True
         </pre>
+        </div>
         <p><b>
             Click "Best solutions" at mission menu and see a lot of other interesting solutions!
         <b></p>
