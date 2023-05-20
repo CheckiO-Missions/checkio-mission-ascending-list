@@ -1,19 +1,18 @@
 <!-- Describe task in general -->
 
 <p>
-    Determine whether the {% if is_js %}Array{% else %}list{% endif %} of elements is ascending such that each of its elements
-    is strictly larger than (and not merely equal to) the preceding element.
-    Empty {% if is_js %}Array{% else %}list{% endif %} consider as ascending.
+    Determine whether the {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} of elements is ascending such that each of its elements is strictly larger than (and not merely equal to) the preceding element.
+    Empty {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} is considered as ascending.
 </p>
 
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% if is_js %}An Array with numbers{% else %}A list with integers{% endif %}.
+    <strong>Input:</strong> {% if is_js %}An <span translate="repeat">array</span> with <span translate="repeat">numbers</span>{% else %}A <span translate="repeat">list</span> with <span translate="repeat">integers</span>{% endif %}.
 </p>
 
 <p>
-    <strong>Output:</strong> Boolean.
+    <strong>Output:</strong> {% if is_js %}<span translate="repeat">Boolean</span>{% else %}<span translate="repeat">Bool</span>{% endif %}">{{init_code_tmpl}}.
 </p>
 
 
