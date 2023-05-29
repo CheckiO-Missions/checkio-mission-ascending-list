@@ -1,18 +1,18 @@
 <!-- Describe task in general -->
 
 <p>
-    Déterminez si le<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} d'éléments est ascendant de sorte que chacun de ses éléments est strictement plus grand que (et pas simplement égal à) l'élément précédent.
-    Le tableau vide {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} est considéré comme ascendant.
+    Déterminez si le {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %}<span>liste</span> <span>(list)</span>{% endif %} d'éléments est ascendant de sorte que chacun de ses éléments est strictement plus grand que (et pas simplement égal à) l'élément précédent.
+    Le tableau vide {% if is_js %}<span>(array)</span>{% else %}<span>liste</span> <span>(list)</span>{% endif %} est considéré comme ascendant.
 </p>
 
 
 <!-- Explain input and output values -->
 <p>
-   <strong>Entrée:</strong> {% if is_js %}Un <span>tableau</span> <span>(array)</span> avec des <span>nombres</span> <span>(numbers)</span>{% else %} Une <span>liste</span> <span>(list)</span> avec des <span>entiers</span> <span>(integers)</span>{% endif %}.
+   <strong>Entrée:</strong> {% if is_js %}Un <span>tableau</span> <span>(array)</span> avec des <span>nombres</span> <span>(numbers)</span>{% else %}Une <span>liste</span> <span>(list)</span> avec des <span>entiers</span> <span>(integers)</span>{% endif %}.
 </p>
 
 <p>
-   <strong>Sortie:</strong> {% if is_js %}<span>Booléen</span> <span>(Boolean)</span>{% else %} Bool{% endif %}.
+   <strong>Sortie:</strong> {% if is_js %}<span>Booléen</span> <span>(boolean)</span>{% else %}<span>Booléen</span> <span>(bool)</span>{% endif %}.
 </p>
 
 
