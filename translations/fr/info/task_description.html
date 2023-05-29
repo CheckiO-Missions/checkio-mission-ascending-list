@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+
+<p>
+    Déterminez si le<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} d'éléments est ascendant de sorte que chacun de ses éléments est strictement plus grand que (et pas simplement égal à) l'élément précédent.
+    Le tableau vide {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} est considéré comme ascendant.
+</p>
+
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> {% if is_js %}Un <span>tableau</span> <span>(array)</span> avec des <span>nombres</span> <span>(numbers)</span>{% else %} Une <span>liste</span> <span>(list)</span> avec des <span>entiers</span> <span>(integers)</span>{% endif %}.
+</p>
+
+<p>
+   <strong>Sortie:</strong> {% if is_js %}<span>Booléen</span> <span>(Boolean)</span>{% else %} Bool{% endif %}.
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p><i>La mission a été tirée de Python CCPS 109 Fall 2018. Elle est enseignée pour l'école d'éducation permanente Ryerson Chang par <a href="http://www.scs.ryerson.ca/~ikokkari/">Ilkka Kokkarinen</a></i></p>
