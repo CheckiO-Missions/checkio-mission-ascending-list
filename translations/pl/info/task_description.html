@@ -1,0 +1,27 @@
+<!-- Describe task in general -->
+
+<p>
+    Określa, czy sekwencja elementów jest rosnąca w taki sposób, że każdy z jej elementów jest ściśle większy od (a nie tylko równy) elementu poprzedzającego. Pusty ciąg jest uważany za rosnący.
+</p>
+
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Dane wejściowe:</strong> {% if is_js %}Tablica{% else %}Lista{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> z liczbami całkowitymi <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Wartość logiczna <span>(bool{% if is_js %}ean{% endif %})</span>.
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p><i>Misja została zaczerpnięta z Python CCPS 109 Fall 2018. Jest on prowadzony dla Ryerson Chang School of Continuing Education przez <a href="http://www.scs.ryerson.ca/~ikokkari/">Ilkka Kokkarinen</a></i></p>
