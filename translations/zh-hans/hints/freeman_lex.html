@@ -1,0 +1,194 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不知道如何开始解决这项任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 嗯，一般的想法是遍历列表并比较每个值和下一个值。如果你发现一个项目不比下一个项目小，那么列表就不是递增的。
+        </p> 
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我应该使用 Python 的什么工具来遍历 list？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            在这个特殊的解决方案中，我推荐你使用<a target="_blank" href="https://docs.python.org/3/reference/compound_stmts.html#while">while statement</a> ：
+        </p>
+        <pre class="brush: python">
+while (condition == True):
+    ...
+        </pre>
+        <p>
+            但是请注意，如果条件总是<b class="code">True</b> ，您将收到一个无限循环。因此，在<b class="code">while</b> 中，您可以将条件设为<b class="code">False</b> 或使用<b class="code">break</b> 命令。例如，以下代码将执行<b class="code">N</b> 次：</p>
+        <pre class="brush: python">
+i = 0
+while i < N:
+    ...
+    # better use increment 'i += 1'
+    i = i + 1 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我理解<b class="code">while</b> ，但是我应该怎么做来代替<b class="code">while</b> 里面的<b class="code">...</b> 呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            正如我在第一个提示中所说，您必须比较一对值，并检查其中任何一个值是否严格小于下一个值：
+        </p>
+        <pre class="brush: python">
+if items[a]>= items[a + 1]:
+    ...
+        </pre>            
+    </div>
+</div>        
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好的，但这只是一次比较......如何比较所有列表中的值呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            为此，您需要结合前面的两条提示。由于您是从列表的开头开始比较的，您可以使用已经声明的变量<b class="code">i</b> 作为索引从列表中获取特定的值：
+        </p>
+        <pre class="brush: python">
+i = 0
+while i < N:
+    if items[i]>= items[i + 1]:
+        ...
+    i += 1
+        </pre>
+        <p>
+            作为第二个索引，您使用<b class="code">[i + 1]</b> ，因此必须不遍历到列表的末尾 -<b class="code">len(items)</b> ，而只遍历到<b class="code">len(items) - 1</b> 。否则，<b class="code">i + 1</b> 将在列表之外，并引发<b class="code">IndexError</b> 。使用它代替<b class="code">N</b> ：</p>
+        <pre class="brush: python">
+i = 0
+while i < len(items) - 1:
+    if items[i]>= items[i + 1]:
+        ...
+    i += 1
+        </pre>                         
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好的，但是我的解决方案仍然没有返回任何布尔值。我应该添加什么？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            是的。如果在比较中第一个值不是严格小于下一个值，我们的列表就不是升序。在这种情况下，在<b class="code">if</b> 中，您需要返回<b class="code">False</b> ，而不是<b class="code">...</b> 。但是如果<b class="code">while</b> 结束时没有返回这个值，这意味着列表是升序的，在<b class="code">while</b> 之后必须返回<b class="code">True</b> 。不要忘记定义函数本身;-):
+        </p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    i = 0
+    while i < len(items)-1:
+        if items[i]>= items[i+1]:
+            return False
+        i += 1
+
+    return True
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            如果是空列表呢？它也应该返回<b class="code">True</b> 。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            代码中已经预测到这种情况。如果列表为空，请再看一遍代码，并加上备注：</p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    i = 0
+    # len(items) == 0
+    # 0-1 == -1
+    # so the first 'while' looks like:
+    # this condition is already False, 'while' never starts.
+    while 0 < -1: 
+        ...
+    # go here directly.    
+    return True 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我想知道是否有可能在一行中写出这个解决方案？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            可以。在<a target="_blank" href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> 中使用生成器，并使用<b class="code">not items</b> 检查列表的空性。注意，使用all()时你应该改变比较条件--所有值必须严格小于下一个值。让我们看看这个：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+                
+    return not items or all(items[i] < items[i+1]
+                            for i in range(len(items)-1))                
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            告诉我更多的解决方案！<br />
+            因为我想成为一个真正的 🥇 Python Ninnjaa！
+        </p>
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            使用<b class="code">set()</b> 删除重复的列表，使用<b class="code">sorted()</b> 将列表按升序排列为一个新的列表。如果与原始列表相同，则原始列表是严格的升序排列。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return sorted(set(items)) == items
+        </pre>
+        </div>
+        <p>
+            此解决方案使用递归：它检查前两个元素并在较小的列表中调用相同的函数。
+            在更小的列表中调用相同的函数。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return items[0] < items[1] and is_ascending(items[1:]) if len(items)> 1 else True
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            哇，谢谢！我现在知道并理解得更多了！一切正常！
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            很高兴听到这个消息！
+        </p>
+    </div>
+</div>
+</body>
