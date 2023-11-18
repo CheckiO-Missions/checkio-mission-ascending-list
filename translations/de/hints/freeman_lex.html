@@ -1,0 +1,194 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 Nun, die allgemeine Idee ist, die Liste zu iterieren und jeden Wert mit dem nächsten zu vergleichen. Wenn Sie einen Eintrag finden, der nicht kleiner ist als der nächste, dann ist die Liste nicht aufsteigend.
+        </p> 
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Welches Python-Instrument sollte ich verwenden, um über die Liste zu iterieren?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            In dieser speziellen Lösung empfehle ich Ihnen, <a target="_blank" href="https://docs.python.org/3/reference/compound_stmts.html#while">while statement</a> zu verwenden:
+        </p>
+        <pre class="brush: python">
+while (condition == True):
+    ...
+        </pre>
+        <p>
+            Aber Vorsicht, wenn die Bedingung immer <b class="code">True</b> ist, werden Sie eine Endlosschleife erhalten. Daher sollten Sie innerhalb von <b class="code">while</b> die Bedingung <b class="code">False</b> einfügen oder den Befehl <b class="code">break</b> verwenden. Der folgende Code wird zum Beispiel <b class="code">N</b> mal ausgeführt:</p>
+        <pre class="brush: python">
+i = 0
+while i < N:
+    ...
+    # better use increment 'i += 1'
+    i = i + 1 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich verstehe <b class="code">while</b>, aber was sollte ich anstelle von <b class="code">...</b> innerhalb von <b class="code">while</b> tun?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Wie ich bereits im ersten Hinweis sagte, müssen Sie ein Wertepaar vergleichen und prüfen, ob einer der Werte nicht genau kleiner ist als der nächste:
+        </p>
+        <pre class="brush: python">
+if items[a]>= items[a + 1]:
+    ...
+        </pre>            
+    </div>
+</div>        
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, aber das ist nur ein Vergleich... wie vergleicht man Werte über die gesamte Liste?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Dazu müssen Sie die beiden vorherigen Hinweise kombinieren. Da Sie den Vergleich ganz am Anfang der Liste beginnen, können Sie die bereits deklarierte Variable <b class="code">i</b> als Index verwenden, um einen bestimmten Wert aus der Liste zu erhalten:
+        </p>
+        <pre class="brush: python">
+i = 0
+while i < N:
+    if items[i]>= items[i + 1]:
+        ...
+    i += 1
+        </pre>
+        <p>
+            Als zweiten Index verwenden Sie <b class="code">[i + 1]</b>, müssen also nicht bis zum Ende der Liste - <b class="code">len(items)</b>- iterieren, sondern nur bis <b class="code">len(items) - 1</b>. Andernfalls wird <b class="code">i + 1</b> außerhalb der Liste liegen und <b class="code">IndexError</b> auslösen. Verwenden Sie stattdessen <b class="code">N</b>:</p>
+        <pre class="brush: python">
+i = 0
+while i < len(items) - 1:
+    if items[i]>= items[i + 1]:
+        ...
+    i += 1
+        </pre>                         
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok, aber meine Lösung gibt immer noch keinen booleschen Wert zurück. Was soll ich hinzufügen?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ja. Wenn im Vergleich der erste Wert nicht unbedingt kleiner ist als der nächste, ist unsere Liste nicht aufsteigend. In diesem Fall müssen Sie innerhalb von <b class="code">if</b> anstelle von <b class="code">...</b> <b class="code">False</b> zurückgeben. Wenn jedoch <b class="code">while</b> ohne diese Rückgabe endet, bedeutet dies, dass die Liste aufsteigend ist und Sie nach <b class="code">while</b> <b class="code">True</b> zurückgeben müssen. Vergessen Sie nicht, die Funktion selbst zu definieren;-):
+        </p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    i = 0
+    while i < len(items)-1:
+        if items[i]>= items[i+1]:
+            return False
+        i += 1
+
+    return True
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Was ist mit dem Fall einer leeren Liste? Sie sollte auch <b class="code">True</b> zurückgeben.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Dieser Fall ist im Code bereits vorausgesagt. Bitte sehen Sie sich den Code noch einmal mit den Hinweisen an, wenn die Liste leer ist:</p>
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    i = 0
+    # len(items) == 0
+    # 0-1 == -1
+    # so the first 'while' looks like:
+    # this condition is already False, 'while' never starts.
+    while 0 < -1: 
+        ...
+    # go here directly.    
+    return True 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich frage mich, ob es möglich ist, diese Lösung in einer Zeile zu schreiben?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ja. Verwenden Sie den Generator in <a target="_blank" href="https://www.w3schools.com/python/ref_func_all.asp">all()</a> und prüfen Sie die Leere der Liste mit <b class="code">not items</b>. Beachten Sie, dass Sie bei der Verwendung von all() die Vergleichsbedingung ändern sollten - alle Werte müssen strikt kleiner als der nächste sein. Schauen wir uns das mal an:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+                
+    return not items or all(items[i] < items[i+1]
+                            for i in range(len(items)-1))                
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Zeigen Sie mir mehr Lösungen!<br />
+            denn ich will ein echter 🥇 Python Ninnjaa sein!
+        </p>
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Mit <b class="code">set()</b> entfernen Sie Duplikate und mit <b class="code">sorted()</b> ordnen Sie die Liste in aufsteigender Reihenfolge zu einer neuen Liste an. Wenn sie gleich bleibt wie das Original - das Original ist streng aufsteigend.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return sorted(set(items)) == items
+        </pre>
+        </div>
+        <p>
+            Diese Lösung verwendet eine Rekursion: Sie prüft die ersten beiden Elemente und ruft
+            die gleiche Funktion für die kleinere Liste auf.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_ascending(items: list[int]) -> bool:
+
+    return items[0] < items[1] and is_ascending(items[1:]) if len(items)> 1 else True
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Wow, danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Freut mich zu hören!
+        </p>
+    </div>
+</div>
+</body>
